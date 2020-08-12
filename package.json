@@ -1,0 +1,17 @@
+{
+  "name": "io-ts-example",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "yarn install && tsc --build tsconfig.json --clean",
+    "play": "ts-node src/index.ts"
+  },
+  "main": "src/index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "io-ts": "^2.2.9",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/winston": "^2.4.4"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir":"compiled",
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "es2020"
+    ],
+    "target": "es2019",
+
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    // "noImplicitReturns": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    "preserveWatchOutput": true,
+    "sourceMap": true,
+    "strict": true,
+  },
+  "include": [
+    "src/*"
+  ],
+}
