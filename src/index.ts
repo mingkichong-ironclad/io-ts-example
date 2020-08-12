@@ -1,3 +1,5 @@
+import { pipe } from 'fp-ts/lib/pipeable'
+import { fold } from 'fp-ts/lib/Either'
 import * as t from 'io-ts';
 import * as winston from 'winston';
 
@@ -25,16 +27,27 @@ const LowerCaseString = <S extends string>(s: S) => {
   );
 };
 
+
+const onLeft = (errors: t.Errors) => {
+  logger.error(JSON.stringify(errors, null, 2));
+};
+
+const onRight = (s: string) => {
+  logger.info(JSON.stringify(s))
+}
+
 function main() {
-  logger.info('--- START ---');
+  logger.debug('--- START ---');
 
   const word = 'abcdef';
-  const LowerCase = LowerCaseString(word);
+  const decode = (s: string) => pipe(LowerCaseString(word).decode(s), fold(onLeft, onRight));
 
-  console.log(LowerCase.decode(word));
-  console.log(LowerCase.decode(`${word}123456`));
+  decode(word);
+  decode(word.toUpperCase());
+  decode('AbCdEf');
+  decode(`${word}123456`);
 
-  logger.info('---  END  ---');
+  logger.debug('---  END  ---');
 }
 
 main();

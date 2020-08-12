@@ -8,6 +8,7 @@
   "main": "src/index.ts",
   "license": "MIT",
   "dependencies": {
+    "fp-ts": "^2.8.1",
     "io-ts": "^2.2.9",
     "winston": "^3.3.3"
   },
