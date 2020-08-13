@@ -22,7 +22,7 @@ const LowerCaseString = <S extends string>(s: S) => {
   return new t.Type<S, string, unknown>(
     'LowerCaseString',
     isLowerCaseString,
-    (input, context) => (isLowerCaseString(input) ? t.success(input) : t.failure(input, context)),
+    (input, context) => (isLowerCaseString(input) ? t.success(input.toLowerCase() as S) : t.failure(input, context)),
     t.identity
   );
 };
