@@ -17,8 +17,8 @@ const logger = winston.createLogger({
   ],
 });
 
-const LowerCaseString = <S extends string>(s: S) => {
-  const isLowerCaseString = (word: unknown): word is S => typeof word === 'string' && word.toLowerCase() === s;
+const lowerCaseString = <S extends string>(s: S) => {
+  const isLowerCaseString = (word: unknown): word is S => typeof word === 'string' && word.toLowerCase() === s.toLowerCase();
   return new t.Type<S, string, unknown>(
     'LowerCaseString',
     isLowerCaseString,
@@ -26,7 +26,6 @@ const LowerCaseString = <S extends string>(s: S) => {
     t.identity
   );
 };
-
 
 const onLeft = (errors: t.Errors) => {
   logger.error(JSON.stringify(errors, null, 2));
@@ -39,8 +38,8 @@ const onRight = (s: string) => {
 function main() {
   logger.debug('--- START ---');
 
-  const word = 'abcdef';
-  const decode = (s: string) => pipe(LowerCaseString(word).decode(s), fold(onLeft, onRight));
+  const word = 'Abcdef';
+  const decode = (s: string) => pipe(lowerCaseString(word).decode(s), fold(onLeft, onRight));
 
   decode(word);
   decode(word.toUpperCase());
