@@ -1,5 +1,5 @@
 {
-  "name": "io-ts-example",
+  "name": "lower-case-string",
   "version": "1.0.0",
   "scripts": {
     "build": "yarn install && tsc --build tsconfig.json --clean",
